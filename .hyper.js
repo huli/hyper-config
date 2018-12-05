@@ -97,7 +97,7 @@ module.exports = {
     //
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
-    shell: 'C:\\Program Files (x86)\\Git\\git-cmd.exe',
+    shell: `C:\\Program Files (x86)\\Git\\git-cmd.exe`,
 
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
@@ -124,8 +124,32 @@ module.exports = {
 
     // for advanced config flags please refer to https://hyper.is/#cfg
     opacity: {
-      focus: 0.98,
-      blur: 0.7
+      focus: 1,
+      blur: 0.8
+    },
+ paneNavigation: {
+      debug: false,
+      hotkeys: {
+        navigation: {
+          up: 'ctrl+up',
+          down: 'ctrl+down',
+          left: 'ctrl+left',
+          right: 'ctrl+right'
+        },
+        jump_prefix: 'ctrl', // completed with 1-9 digits
+        permutation_modifier: 'shift', // Added to jump and navigation hotkeys for pane permutation
+        maximize: 'meta+enter'
+      },
+      showIndicators: true, // Show pane number
+      indicatorPrefix: '^⌥', // Will be completed with pane number
+      indicatorStyle: { // Added to indicator <div>
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        fontSize: '10px'
+      },
+      focusOnMouseHover: false,
+      inactivePaneOpacity: 0.6 // Set to 1 to disable inactive panes dimming
     }
   },
 
@@ -141,8 +165,12 @@ module.exports = {
     "hyper-opacity",
     "hyper-tab-icons",
     "hyperborder",
-    "hyper-pane"
+    "hyper-pane", //does destroy mapping of different characters https://github.com/zeit/hyper/issues/3107
+    "hyper-powershell",
   ],
+
+
+
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
